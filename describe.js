@@ -32,11 +32,16 @@ module.exports = (function(){
 		};
 	}
 
-	function iter(tar, src) {
+	function iter(tar, src) {	    
+	    if (typeof src == 'string') {
+	    	var check = handles(src);
+	    	assert(check(tar), 'type not match, expected [' + src + '], but get ['+ typeof tar + ']');
+	    	return;
+	    }
 	    var keys = Object.keys(tar);
 	    assert(keys && keys.length > 0, 'object is empty');
 	    assert(src, 'description is empty');
-	    
+
 	    for (var key in tar) {
 	    	var srcKey, tarKey;
 	    	srcKey = tarKey = key;

@@ -30,6 +30,18 @@ describe('describe', function(){
 		});
 	});
 
+	it('simple object', function(){
+		desc(1, 'number');
+		desc('hello', 'string');
+		desc({}, 'object');
+		desc(0/0, 'NaN');
+		desc([], 'array');
+		desc(void 0, 'undefined');
+		desc(null, 'null');
+		desc(true, 'boolean');
+		desc(function(){}, 'function');
+	})
+
 	it('nesting object', function() {
 		var target = {
 			level1: {
