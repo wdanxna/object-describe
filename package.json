@@ -1,0 +1,32 @@
+{
+  "name": "object-describe",
+  "version": "1.0.0",
+  "description": "A lightweight recursive object scheme validator.",
+  "author": {
+    "name": "dan wu",
+    "email": "wdanxna@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "validator",
+    "describe",
+    "assert"
+  ],
+  "main": "describe.js",
+  "scripts": {
+    "test": "mocha test.js"
+  },
+  "dependencies": {
+    "mocha":"*"
+  },
+  "maintainers": [
+    {
+      "name": "amasad",
+      "email": "amjad.masad@gmail.com"
+    }
+  ]
+}
