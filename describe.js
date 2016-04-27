@@ -42,14 +42,16 @@ module.exports = (function(){
 	    assert(keys && keys.length > 0, 'object is empty');
 	    assert(src, 'description is empty');
 
-	    for (var key in tar) {
+	    for (var key in src) {
 	    	var srcKey, tarKey;
 	    	srcKey = tarKey = key;
 
-	    	if (src[key] === void 0) {
-	    		srcKey = srcKey + '?';
+	    	var optional = key.indexOf('?') !== -1;
+	    	if (tar[tarKey] === void 0 && optional) {
+	    		tarKey = tarKey.substring(0, key.indexOf('?'));
 			}
-			if (!src[srcKey]) { assert(false, key + 'not described.');}
+			if (!optional && !tar.hasOwnProperty(tarKey)) { assert(false, tarKey + ' not defined.');}
+			if (optional && !tar.hasOwnProperty(tarKey)) continue;
 
 	        if (typeof src[srcKey] === 'object' && typeof tar[tarKey] === 'object') {
                 iter(tar[tarKey], src[srcKey]);
@@ -68,7 +70,7 @@ module.exports = (function(){
 	        		}
 	    		}
 	    		if (!matched) {
-	    			assert(false , key + ' do not match any given description.');
+	    			assert(false , tarKey + ' miss type, expecting: ' + src[srcKey] + ' got: ' + typeof tar[tarKey] + '.');
 	    		}
 	        }
 	    }   

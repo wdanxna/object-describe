@@ -170,5 +170,30 @@ describe('describe', function(){
 				}, descriptor);
 			});
 		});
+
+		describe('#wtf', function(){
+			var target = {
+				secretTaskId: '56cae28c5de12aff74065ebf',
+				taskDescId: '559e65b3040a5ee37e4505b3',
+				startLabel: 0,
+				endLabel: 6,
+				cSuffix: '',
+				haha:'',
+				destDir: 1
+			};
+
+			it('1', function(){
+				desc(target, {
+					secretTaskId: 'string',
+					taskDescId: 'string',
+					cSuffix: 'string',
+					'startTime?': 'object',
+					'endTime?': 'object',
+					'startLabel?': 'number',
+					'endLabel?': 'number',
+					destDir: 'string',
+				});
+			});
+		});
 	});
 });
